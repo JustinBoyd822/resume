@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2em auto;
+            background: white;
+            padding: 1.5em;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #eee;
+            margin: 0.5em 0;
+            padding: 0.5em;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 0.5em 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #password-display {
+            margin-top: 1em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Portfolio</h1>
+    </header>
+    <div class="container">
+        <h2>My Skills</h2>
+        <ul>
+            {% for skill in skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Professional Experience</h2>
+        <ul>
+            <li><strong>Rocket Mortgage</strong> - Intern (December 2022 – July 2023)<br>
+                - Utilized coding languages such as HTML and C++ to contribute to website development projects.<br>
+                - Engaged with financial directors to understand organizational roles and decision-making.<br>
+                - Assisted in developing concepts for internal websites to improve onboarding for future interns.
+            </li>
+            <li><strong>Planet Fitness</strong> - Customer Service Representative (August 2023 – Present)<br>
+                - Conducted facility tours and assisted with new member sign-ups.<br>
+                - Resolved member concerns about payments, amenities, and club policies in person and over the phone.<br>
+                - Maintained a clean and welcoming facility environment, including upkeep of equipment and amenities.
+            </li>
+        </ul>
+
+        <h2>Education</h2>
+        <ul>
+            <li><strong>Madonna University</strong> - Current Student (August 2023 – Present)</li>
+            <li><strong>Communication Media Arts High School</strong> - Graduate (September 2019 – 2023)</li>
+        </ul>
+
+        <h2>Leadership Experience</h2>
+        <ul>
+            <li><strong>Urban Alliance</strong> - Participant (October 2022 – Present)<br>
+                - Completed year-long career readiness training, focusing on effective communication, professional practices, Microsoft Office proficiency, post-high school planning, and financial literacy.<br>
+                - Earned a nine-month internship with Rocket Mortgage, contributing over 500 hours of on-the-job support.
+            </li>
+        </ul>
+
+        <h2>Generate a Random Password</h2>
+        <button id="generate-password">Generate Password</button>
+        <div id="password-display"></div>
+    </div>
+
+    <script>
+        document.getElementById('generate-password').addEventListener('click', function() {
+            const randomPassword = Array(12).fill(0).map(() => {
+                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%';
+                return chars[Math.floor(Math.random() * chars.length)];
+            }).join('');
+            document.getElementById('password-display').innerText = `Generated Password: ${randomPassword}`;
+        });
+    </script>
+</body>
+</html>
